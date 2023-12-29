@@ -132,14 +132,16 @@ export default {
       </button>
     </div>
   </div>
-  <div class="p-6">
+  <div class="p-6 w-full">
     <div class="flex justify-start">
       <p class="font-sans text-lg font-semibold">
       Hello Evano <span class="wave">👋🏾</span> ,
     </p>
     </div>
     
-    <router-view class="h-full"></router-view>
+    <div class="w-full">
+      <router-view class="h-full"></router-view>
+    </div>
   </div>
 </div></template>
 
