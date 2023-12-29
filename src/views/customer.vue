@@ -7,16 +7,16 @@
       width="600"
     >
       <template v-slot:activator="{ props }">
-        <div class="flex justify-end mr-3 mb-2">
-          <button v-bind="props"  type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-<svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+          <div class="flex justify-end mr-3 mb-2">
+            <button v-bind="props"  type="button" class="bg-green-200 hover:bg-green-400 focus:ring-4 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-green-200 dark:hover:bg-green-400">
+              <svg class="h-6 w-6 text-green-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
 </svg>
-<span class="sr-only">Icon description</span>
-</button>
-        </div>
+  <span class="sr-only">Icon description</span>
+  </button>
+          </div>
         
-      </template>
+        </template>
       <v-card>
         
         <v-card-text>
@@ -122,8 +122,59 @@
       </v-card>
     </v-dialog>
   </v-row>
+  <div class="rounded-lg p-2 bg-white mt-4">
+     <div class="flex flex-row" style="justify-content: space-around">
+      <div class="p-2 bg-white mt-4"> 
+        <div class="flex flex-row">
+          <div class="h-20 w-20 flex items-center justify-center rounded-full bg-green-200">
+            <svg class="h-10 w-10 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+            </svg>
+          </div>
+        <div class="pl-5">
+          <p class="text-sm text-slate-500">Total Customers</p>
+          <p class="text-3xl font-semibold">5,423</p>
+          <p class="text-sm font-medium"><span class="text-green-700">↑ 16%</span> this month</p>
+        </div>    
+        </div>
+      </div>
+        <div class="p-2 bg-white mt-4">
+          <div class="flex flex-row">
+            <div class="h-20 w-20 flex items-center justify-center rounded-full bg-green-200">
+            <svg class="h-10 w-10 text-green-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+          </div>
+          <div class="pl-5">
+          <p class="text-sm text-slate-500">Members</p>
+          <p class="text-3xl font-semibold">1,893</p>
+          <p class="text-sm font-medium"><span class="text-red-700">↓ 1%</span> this month</p>
+        </div> 
+          </div>
+        </div>
+        <div class="p-2 bg-white mt-4">
+          <div class="flex flex-row">
+            <div class="h-20 w-20 flex items-center justify-center rounded-full bg-green-200">
+            <svg class="h-10 w-10 text-green-700"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <rect x="2" y="7" width="20" height="15" rx="2" ry="2" />  <polyline points="17 2 12 7 7 2" /></svg>
+          </div>
+          <div class="pl-5">
+          <p class="text-sm text-slate-500">Active now</p>
+          <p class="text-3xl font-semibold">189</p>
+          <div class="flex -space-x-1 overflow-hidden">
+            <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="">
+            <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+        </div>
+        </div> 
+          </div>
+        
+        </div>
+     </div>
 
-  <div class="rounded-lg p-2 bg-white mt-4 w-100000">
+    </div>
+
+  <div class="rounded-lg p-2 bg-white mt-4">
     <div class="flex justify-between p-4">
       <div>
         <p class="text-lg font-semibold">All Customers</p>
@@ -139,9 +190,9 @@
     class="w-full"
     :headers="headers"
     :items="customers"
-    :items-per-page="5"
-    :expanded.sync="expandedItems"
-    item-key="email" show-expand
+    v-model:page="page"
+    :items-per-page=5
+    @click:row="onRowClicked"
     header-class="custom-header-style"
   >
       <template v-slot:item.status="{ item }">
@@ -151,20 +202,71 @@
         </div>
       </template>
 
-      <template v-slot:expand="{ item }">
-  <tr>
-    <td :colspan="headers.length">
-      <div class="p-4">
-        <p><strong>Additional Information:</strong></p>
-        <p>Email: {{ item.email }}</p>
-        <p>Country: {{ item.country }}</p>
-        <!-- Add other details as needed -->
-        <pre>{{ item }}</pre> <!-- Output the entire 'item' object -->
+      <template v-slot:bottom>
+      <div class="text-center pt-2">
+        <v-pagination
+          v-model="page"
+          :length="pageCount"
+        ></v-pagination>
       </div>
-    </td>
-  </tr>
-</template>
+    </template>
+
   </v-data-table>
+
+ <!-- Dialog component for displaying expanded item -->
+   <v-dialog v-model="dialogVisible" max-width="600">
+ 
+      <v-card>
+        <v-card-text>
+          <div class="customer-details">
+            <div class="flex mr-4" style="justify-content: flex-end;">
+              <button @click="dialogVisible = false" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <span class="sr-only">Close menu</span>
+                <!-- Heroicon name: outline/x -->
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+      <div v-for="customer in this.expandedItems" :key="customer.email" class="customer">
+        <div class="mb-6 lg:mb-0">
+            <div class="relative block rounded-lg p-6 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+              <div class="flex-row items-center lg:flex">
+                <div class="w-full shrink-0 grow-0 basis-auto lg:w-5/12 lg:pr-6">
+                  <img :src="randomImage" alt="Avatar"
+                    class="mb-6 w-full rounded-md lg:mb-0" />
+                </div>
+                <div class="w-full shrink-0 grow-0 basis-auto lg:w-7/12">
+                  <h5 class="mb-2 text-lg font-bold text-sky-700">{{ customer.name }}</h5>
+                  <p><strong>Company:</strong> {{ customer.company }}</p>
+                  <p><strong>Email:</strong> {{ customer.email }}</p>
+                  <p><strong>Country:</strong> {{ customer.country }}</p>
+                  <p><strong>Status:</strong> 
+                      <v-chip :color="customer.status === 'active' ? 'green' : 'red'"
+                :text="customer.status === 'active' ? 'active' : 'inactive'" class="text-uppercase pl-2" label size="small"></v-chip></p>
+
+                  <div class="pt-4">
+                    <h3 class="text-lime-500">Addresses:</h3>
+                  <div v-for="(address, index) in customer.addresses" :key="index" class="address">
+                    <p><strong>Address {{ index + 1 }}:</strong></p>
+                    <div class="pl-4">
+                      <p><strong>Number:</strong> {{ address.number }}</p>
+                      <p><strong>Street:</strong> {{ address.street }}</p>
+                      <p><strong>City:</strong> {{ address.city }}</p>
+                    </div>
+                  </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -175,6 +277,7 @@ export default {
     return {
       search: '',
       dialog: false,
+      dialogVisible: false,
       formData: {
         name: '',
         company: '',
@@ -188,7 +291,16 @@ export default {
           city: ''
         }
       },
+      imageSources: [
+        'https://mdbcdn.b-cdn.net/img/new/avatars/1.webp',
+        'https://tecdn.b-cdn.net/img/new/avatars/2.webp',
+        'https://tecdn.b-cdn.net/img/new/avatars/3.webp',
+        'https://tecdn.b-cdn.net/img/new/avatars/4.webp',
+        'https://tecdn.b-cdn.net/img/new/avatars/5.webp'
+      ],
       expandedItems: [],
+      page: 1,
+      itemsPerPage: 5,
       headers: [
         {
           align: 'start',
@@ -409,20 +521,16 @@ export default {
   },
 
   created() {
-    // Populate expandedItems with all unique identifiers (e.g., emails)
-    this.expandedItems = this.customers.map(customer => customer.email);
   },
 
   methods: {
-    toggleRow(item) {
-      const index = this.expandedItems.indexOf(item);
-      if (index > -1) {
-        this.expandedItems.splice(index, 1);
-        console.log(this.expandedItems)
-      } else {
-        this.expandedItems.push(item);
-        console.log(this.expandedItems)
-      }
+    onRowClicked(item, row) {
+      this.expandedItems = [];
+      const index = row.index
+      if (index !== -1) {
+        this.expandedItems.push(this.customers[index]);
+        this.dialogVisible = true;
+      } 
     },
 
     saveForm() {
@@ -449,7 +557,18 @@ export default {
     });
   }
   },
+
+  computed: {
+    randomImage() {
+      const randomIndex = Math.floor(Math.random() * this.imageSources.length);
+      return this.imageSources[randomIndex];
+    },
+    pageCount () {
+        return Math.ceil(this.customers.length / this.itemsPerPage)
+      },
+  }
 }
+
 </script>
 
 <style>
