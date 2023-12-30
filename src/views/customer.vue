@@ -1,121 +1,146 @@
 <template>
     
     <v-row justify="end">
+
+      <div class="flex justify-end mr-3 mb-2">
+            <button @click="openDialog" type="button" class="bg-green-200 hover:bg-green-400 focus:ring-4 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-green-200 dark:hover:bg-green-400">
+                <svg class="h-6 w-6 text-green-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                <span class="sr-only">Icon description</span>
+            </button>
+          </div>
     <v-dialog
       v-model="dialog"
       persistent
       width="600"
     >
-      <template v-slot:activator="{ props }">
-          <div class="flex justify-end mr-3 mb-2">
-            <button v-bind="props"  type="button" class="bg-green-200 hover:bg-green-400 focus:ring-4 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-green-200 dark:hover:bg-green-400">
-              <svg class="h-6 w-6 text-green-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-</svg>
-  <span class="sr-only">Icon description</span>
-  </button>
-          </div>
-        
-        </template>
       <v-card>
         
         <v-card-text>
           <v-container>
-            <v-form ref="form" @submit.prevent="saveForm">
-              <v-row>
-               <v-col cols="12">
-                <div class="text-xl font-semibold">Add New Customer</div>
-               </v-col> 
-              <v-col
-                cols="12"
-              >
-                <v-text-field
-                  label="Customer Name*" v-model="formData.name"
-                  required :rules="[v => !!v || 'Name is required', v => v !== null || 'Name cannot be null']"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  label="Company*" v-model="formData.company"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col
-                cols="12"
-              >
-                <v-text-field
-                  label="Contact(Phone)" v-model="formData.phoneNo"
-                ></v-text-field>
-              </v-col>
-              <v-col
-                cols="12"
-              >
-                <v-text-field
-                  label="Email*" v-model="formData.email"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col
-                cols="12"
-              >
-                <v-text-field
-                  label="Country*" v-model="formData.country"
-                  required
-                ></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col
-                cols="12"
-              >
-              <div class="text-lg font-semibold">Address Details</div>
-              </v-col>
-                
-                <v-col
-                cols="12" sm="4"
-              >
-                <v-text-field
-                  label="Number*" v-model="formData.number"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col
-                cols="12" sm="8"
-              >
-                <v-text-field
-                  label="Street*" v-model="formData.street"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col
-                cols="12"
-              >
-                <v-text-field
-                  label="City State*" v-model="formData.city"
-                  required
-                ></v-text-field>
-              </v-col>
-            </v-row>
-            <v-col cols="12">  <small>*indicates required field</small></v-col>
-              <v-col cols="12">
-                <div class="flex justify-end mr-2">
-                  <v-btn
-              color="blue-darken-1"
-              variant="text"
-              @click="dialog = false"
-            >
-              Close
-            </v-btn>
+            <div class="flex mr-4" style="justify-content: flex-end;">
+              <button  @click="closeDialog" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <span class="sr-only">Close menu</span>
+                <!-- Heroicon name: outline/x -->
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
 
-              <v-btn
-              color="blue-darken-1"
-              variant="text" type="submit"
-            >
-              Save
-            </v-btn>
-                </div> 
+            <v-form ref="form" @submit.prevent="saveForm">
+                <v-row>
+                 <v-col cols="12">
+                  <div class="text-xl font-semibold">Add New Customer</div>
+                 </v-col> 
+                <v-col
+                  cols="12"
+                >
+                  <v-text-field
+                    label="Customer Name*" v-model="formData.name"
+                    required :rules="[v => !!v || 'Name is required', v => v !== null || 'Name cannot be null']"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field
+                    label="Company*" v-model="formData.company"
+                    required :rules="[v => !!v || 'Company is required', v => v !== null || 'Company cannot be null']"
+                  ></v-text-field>
+                </v-col>
+                <v-col
+                  cols="12"
+                >
+                  <v-text-field
+                    label="Contact(Phone)" v-model="formData.phoneNo" type="number"
+                    required :rules="[v => /^[0-9]{10}$/.test(v) || 'Please enter 10-digit phone number']"
+                  ></v-text-field>
+                </v-col>
+                <v-col
+                  cols="12"
+                >
+                  <v-text-field
+                    label="Email*" v-model="formData.email"
+                    required :rules="[v => !!v || 'Email is required', v => /.+@.+\..+/.test(v) || 'Please enter valid email address' ]"
+                  ></v-text-field>
+                </v-col>
+                <v-col
+                  cols="12"
+                >
+                  <v-text-field
+                    label="Country*" v-model="formData.country"
+                    required :rules="[v => !!v || 'Country is required', v => v !== null || 'Country cannot be null']"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+              <v-col>
+                <v-col
+                  cols="12"
+                >
+                <div class="text-lg font-semibold">Address Details</div>
+                </v-col>
+
+                <v-col cols="12">
+               <v-alert
+                v-if="formData.addresses.length === 0 || !formData.addresses[0].number || !formData.addresses[0].street || !formData.addresses[0].city"
+                type="error"
+                outlined
+                 >
+                 at least one address is required.
+               </v-alert>
                </v-col>
-</v-form>
+
+                <div v-for="(address, index) in formData.addresses" :key="index">
+
+                  <v-card class="mt-2 mb-2" style="padding: 10px;">
+                    <v-row>
+                    <v-col
+                  cols="12" sm="4"
+                >
+                  <v-text-field 
+                    label="Number*" v-model="address.number"
+                    required 
+                  ></v-text-field>
+                </v-col>
+                <v-col
+                  cols="12" sm="8"
+                >
+                  <v-text-field
+                    label="Street*" v-model="address.street"
+                    required
+                  ></v-text-field>
+                </v-col>
+                <v-col
+                  cols="12"
+                >
+                  <v-text-field
+                    label="City State*" v-model="address.city"
+                    required
+                  ></v-text-field>
+                </v-col>
+                  </v-row>
+                 <v-col col="12">
+                  <button type="button" v-if="index !== 0" @click="removeItem(index)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 flex justify-end">Remove</button>
+                 </v-col>
+                  </v-card>
+               
+              
+            
+              </div>
+                <v-col col="12">
+                  <button type="button" @click="addItem" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add</button>
+                </v-col> 
+            
+              </v-col>
+              <v-col cols="12">  <small>*indicates required field</small></v-col>
+                <v-col cols="12">
+                  <div class="flex justify-end mr-2">
+               
+              <button type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Submit</button>
+           
+                  </div> 
+                 </v-col>
+  </v-form>
            
           </v-container>
         </v-card-text>
@@ -190,7 +215,7 @@
     class="w-full"
     :headers="headers"
     :items="customers"
-    v-model:page="page"
+    :search="search"
     :items-per-page=5
     @click:row="onRowClicked"
     header-class="custom-header-style"
@@ -201,16 +226,6 @@
             :text="item.status === 'active' ? 'active' : 'inactive'" class="text-uppercase" label size="small"></v-chip>
         </div>
       </template>
-
-      <template v-slot:bottom>
-      <div class="text-center pt-2">
-        <v-pagination
-          v-model="page"
-          :length="pageCount"
-        ></v-pagination>
-      </div>
-    </template>
-
   </v-data-table>
 
  <!-- Dialog component for displaying expanded item -->
@@ -272,7 +287,6 @@
 
 <script>
 export default {
-
   data() {
     return {
       search: '',
@@ -284,12 +298,8 @@ export default {
         phoneNo: null,
         email: '',
         country: '',
-        status: 'inactive',
-        address: {
-          number: null,
-          street: '',
-          city: ''
-        }
+        status: 'active',
+        addresses:[],
       },
       imageSources: [
         'https://mdbcdn.b-cdn.net/img/new/avatars/1.webp',
@@ -533,9 +543,41 @@ export default {
       } 
     },
 
+    openDialog() {
+      this.dialog = true;
+      this.formData.addresses.push({ 
+        number: null,
+        street: '',
+        city: '' });
+    },
+
+    closeDialog() {
+      this.dialog = false;
+      this.formData = {
+        name: '',
+        company: '',
+        phoneNo: null,
+        email: '',
+        country: '',
+        status: 'active',
+        addresses:[],
+      }
+    },
+
+    addItem() {
+      this.formData.addresses.push({ 
+        number: null,
+        street: '',
+        city: '' });
+    },
+
+    removeItem(index) {
+      this.formData.addresses.splice(index, 1);
+    },
+
     saveForm() {
-    this.$refs.form.validate().then((valid) => {
-      if (valid) {
+      console.log(this.$refs.form)
+      if (this.$refs.form.isValid) {
         const customerData = {
           name: this.formData.name,
           company: this.formData.company,
@@ -543,18 +585,22 @@ export default {
           email: this.formData.email,
           country: this.formData.country,
           status: 'active', 
-          address: [{
-            number: this.formData.number,
-            street: this.formData.street,
-            city: this.formData.city
-          }]
+          addresses: this.formData.addresses,
         };
         this.customers.push(customerData);
         this.dialog = false;
+        this.formData = {
+        name: '',
+        company: '',
+        phoneNo: null,
+        email: '',
+        country: '',
+        status: 'active',
+        addresses:[],
+      }
       } else {
         console.log('Form is not valid. Please check.');
-      }
-    });
+      }  
   }
   },
 
@@ -566,9 +612,15 @@ export default {
     pageCount () {
         return Math.ceil(this.customers.length / this.itemsPerPage)
       },
+
+      isAddressValid() {
+      return this.formData.addresses.length > 0 &&
+        this.formData.addresses[0].number &&
+        this.formData.addresses[0].street &&
+        this.formData.addresses[0].city;
+    }  
   }
 }
-
 </script>
 
 <style>
