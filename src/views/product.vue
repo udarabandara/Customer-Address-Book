@@ -1,7 +1,6 @@
 <template>
-    <h1>prod</h1>
-  </template>
+</template>
   
-  <script>
+<script>
   export default {}
-  </script>
+</script>

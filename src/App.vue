@@ -22,7 +22,7 @@ export default {
       <div
         class="mt-6 flex flex-col justify-start items-center h-screen pl-4 w-full border-gray-600 border-b space-y-3 pb-5 ">
         <button @click="navigateTo('/')"
-          class="flex jusitfy-start items-center space-x-6 w-full  hover:outline-none  hover:text-indigo-400 focus:outline-none  focus:text-indigo-400 text-white rounded ">
+        class="flex justify-start items-center space-x-6 w-full hover:outline-none hover:text-indigo-400 focus:outline-none focus:text-indigo-400 text-white rounded focus:ring-1 focus:ring-indigo-400">
           <svg class="fill-stroke " width="24" height="24" viewBox="0 0 24 24" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
@@ -41,7 +41,7 @@ export default {
           <p class="text-base leading-4 ">Dashboard</p>
         </button>
         <button @click="navigateTo('/product')"
-          class="flex jusitfy-start items-center w-full  space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded ">
+        class="flex justify-start items-center space-x-6 w-full hover:outline-none hover:text-indigo-400 focus:outline-none focus:text-indigo-400 text-white rounded focus:ring-1 focus:ring-indigo-400">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M10 6H7C6.46957 6 5.96086 6.21071 5.58579 6.58579C5.21071 6.96086 5 7.46957 5 8V17C5 17.5304 5.21071 18.0391 5.58579 18.4142C5.96086 18.7893 6.46957 19 7 19H16C16.5304 19 17.0391 18.7893 17.4142 18.4142C17.7893 18.0391 18 17.5304 18 17V14"
@@ -53,7 +53,7 @@ export default {
           <p class="text-base leading-4 ">Products</p>
         </button>
         <button @click="navigateTo('/customer')"
-          class="flex jusitfy-start items-center w-full  space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded ">
+        class="flex justify-start items-center space-x-6 w-full hover:outline-none hover:text-indigo-400 focus:outline-none focus:text-indigo-400 text-white rounded focus:ring-1 focus:ring-indigo-400">
           <svg class="fill-stroke" width="24" height="24" viewBox="0 0 24 24" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
@@ -65,18 +65,18 @@ export default {
           </svg>
           <p class="text-base leading-4 ">Customers</p>
         </button>
-        <button
-          class="flex jusitfy-start items-center w-full  space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded ">
+        <button @click="navigateTo('/product')"
+        class="flex justify-start items-center space-x-6 w-full hover:outline-none hover:text-indigo-400 focus:outline-none focus:text-indigo-400 text-white rounded focus:ring-1 focus:ring-indigo-400">
           <svg class="text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="5" cy="18" r="2" />  <circle cx="19" cy="6" r="2" />  <path d="M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3" />  <path d="M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3" /></svg>
           <p class="text-base leading-4  ">Income</p>
         </button>
-        <button
-          class="flex jusitfy-start items-center w-full  space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded ">
+        <button @click="navigateTo('/product')"
+        class="flex justify-start items-center space-x-6 w-full hover:outline-none hover:text-indigo-400 focus:outline-none focus:text-indigo-400 text-white rounded focus:ring-1 focus:ring-indigo-400">
           <svg class="text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="9" y1="15" x2="15" y2="9" />  <circle cx="9.5" cy="9.5" r=".5" fill="currentColor" />  <circle cx="14.5" cy="14.5" r=".5" fill="currentColor" />  <path d="M5 7.2a2.2 2.2 0 0 1 2.2 -2.2h1a2.2 2.2 0 0 0 1.55 -.64l.7 -.7a2.2 2.2 0 0 1 3.12 0l.7 .7a2.2 2.2 0 0 0 1.55 .64h1a2.2 2.2 0 0 1 2.2 2.2v1a2.2 2.2 0 0 0 .64 1.55l.7 .7a2.2 2.2 0 0 1 0 3.12l-.7 .7a2.2 2.2 0 0 0 -.64 1.55 v1a2.2 2.2 0 0 1 -2.2 2.2h-1a2.2 2.2 0 0 0 -1.55 .64l-.7 .7a2.2 2.2 0 0 1 -3.12 0l-.7 -.7a2.2 2.2 0 0 0 -1.55 -.64h-1a2.2 2.2 0 0 1 -2.2 -2.2v-1a2.2 2.2 0 0 0 -.64 -1.55l-.7 -.7a2.2 2.2 0 0 1 0 -3.12l.7 -.7a2.2 2.2 0 0 0 .64 -1.55 v-1" /></svg>
           <p class="text-base leading-4  ">Promote</p>
         </button>
-        <button
-          class="flex jusitfy-start items-center w-full  space-x-6 focus:outline-none text-white focus:text-indigo-400 rounded ">
+        <button @click="navigateTo('/product')"
+        class="flex justify-start items-center space-x-6 w-full hover:outline-none hover:text-indigo-400 focus:outline-none focus:text-indigo-400 text-white rounded focus:ring-1 focus:ring-indigo-400">
           <svg class="text-white" width="24" height="24"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
 </svg>
