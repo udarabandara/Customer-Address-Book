@@ -286,45 +286,13 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      search: '',
-      dialog: false,
-      dialogVisible: false,
-      formData: {
-        name: '',
-        company: '',
-        phoneNo: null,
-        email: '',
-        country: '',
-        status: 'active',
-        addresses:[],
-      },
-      imageSources: [
-        'https://mdbcdn.b-cdn.net/img/new/avatars/1.webp',
-        'https://tecdn.b-cdn.net/img/new/avatars/2.webp',
-        'https://tecdn.b-cdn.net/img/new/avatars/3.webp',
-        'https://tecdn.b-cdn.net/img/new/avatars/4.webp',
-        'https://tecdn.b-cdn.net/img/new/avatars/5.webp'
-      ],
-      expandedItems: [],
-      page: 1,
-      itemsPerPage: 5,
-      headers: [
-        {
-          align: 'start',
-          key: 'name',
-          sortable: false,
-          title: 'Customer Name',
-        },
-        { key: 'company', title: 'Company' },
-        { key: 'phoneNo', title: 'Phone Number' },
-        { key: 'email', title: 'Email' },
-        { key: 'country', title: 'Country' },
-        { key: 'status', title: 'Status' },
-      ],
-      customers: [
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+
+const mock = new MockAdapter(axios);
+
+mock.onGet('/customers').reply(200, {
+  customers: [
         {
           name: 'Alice Smith',
           company: 'Google',
@@ -526,11 +494,52 @@ export default {
           ]
         },
       ],
+});
 
+export default {
+  data() {
+    return {
+      search: '',
+      dialog: false,
+      dialogVisible: false,
+      formData: {
+        name: '',
+        company: '',
+        phoneNo: null,
+        email: '',
+        country: '',
+        status: 'active',
+        addresses:[],
+      },
+      imageSources: [
+        'https://mdbcdn.b-cdn.net/img/new/avatars/1.webp',
+        'https://tecdn.b-cdn.net/img/new/avatars/2.webp',
+        'https://tecdn.b-cdn.net/img/new/avatars/3.webp',
+        'https://tecdn.b-cdn.net/img/new/avatars/4.webp',
+        'https://tecdn.b-cdn.net/img/new/avatars/5.webp'
+      ],
+      expandedItems: [],
+      page: 1,
+      itemsPerPage: 5,
+      headers: [
+        {
+          align: 'start',
+          key: 'name',
+          sortable: false,
+          title: 'Customer Name',
+        },
+        { key: 'company', title: 'Company' },
+        { key: 'phoneNo', title: 'Phone Number' },
+        { key: 'email', title: 'Email' },
+        { key: 'country', title: 'Country' },
+        { key: 'status', title: 'Status' },
+      ],
+      customers: [],
     }
   },
 
   created() {
+    this.getCustomers();
   },
 
   methods: {
@@ -541,6 +550,16 @@ export default {
         this.expandedItems.push(this.customers[index]);
         this.dialogVisible = true;
       } 
+    },
+
+    getCustomers(){
+      axios.get('/customers')
+      .then(response => {
+        this.customers = response.data.customers;
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
     },
 
     openDialog() {
@@ -587,7 +606,7 @@ export default {
           status: 'active', 
           addresses: this.formData.addresses,
         };
-        this.customers.push(customerData);
+        this.customers.push(customerData); 
         this.dialog = false;
         this.formData = {
         name: '',
