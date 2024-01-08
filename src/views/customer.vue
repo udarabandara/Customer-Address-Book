@@ -32,7 +32,7 @@
             <v-form ref="form" @submit.prevent="saveForm">
 
               <div class="flex flex-col">
-                <div class="text-xl font-semibold">Add New Customer</div>
+                <div class="text-xl font-semibold text-sky-700 mb-2"  style="text-align: center;">Add New Customer</div>
                 <div class="flex flex-col w-ful mt-2 mb-2">
                   <label for="customerName">Customer Name*</label>
                   <input v-model="formData.name" id="formData.name" name="formData.name" required>
@@ -63,7 +63,7 @@
                   <span class="error-message">{{isCountryValid}}</span>
                 </div>
 
-                <div class="text-lg font-semibold">Address Details</div>
+                <div class="text-lg font-semibold text-sky-700">Address Details</div>
                 <div class="error-message" v-if="formData.addresses.length === 0 ||
                   !formData.addresses[0].number ||
                   !formData.addresses[0].street ||
@@ -684,7 +684,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-}
+  }
 
 .error-message {
   color: red;
