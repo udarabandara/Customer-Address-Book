@@ -30,116 +30,81 @@
             </div>
 
             <v-form ref="form" @submit.prevent="saveForm">
-                <v-row>
-                 <v-col cols="12">
-                  <div class="text-xl font-semibold">Add New Customer</div>
-                 </v-col> 
-                <v-col
-                  cols="12"
-                >
-                  <v-text-field
-                    label="Customer Name*" v-model="formData.name"
-                    required :rules="[v => !!v || 'Name is required', v => v !== null || 'Name cannot be null']"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12">
-                  <v-text-field
-                    label="Company*" v-model="formData.company"
-                    required :rules="[v => !!v || 'Company is required', v => v !== null || 'Company cannot be null']"
-                  ></v-text-field>
-                </v-col>
-                <v-col
-                  cols="12"
-                >
-                  <v-text-field
-                    label="Contact(Phone)" v-model="formData.phoneNo" type="number"
-                    required :rules="[v => /^[0-9]{10}$/.test(v) || 'Please enter 10-digit phone number']"
-                  ></v-text-field>
-                </v-col>
-                <v-col
-                  cols="12"
-                >
-                  <v-text-field
-                    label="Email*" v-model="formData.email"
-                    required :rules="[v => !!v || 'Email is required', v => /.+@.+\..+/.test(v) || 'Please enter valid email address' ]"
-                  ></v-text-field>
-                </v-col>
-                <v-col
-                  cols="12"
-                >
-                  <v-text-field
-                    label="Country*" v-model="formData.country"
-                    required :rules="[v => !!v || 'Country is required', v => v !== null || 'Country cannot be null']"
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-              <v-col>
-                <v-col
-                  cols="12"
-                >
-                <div class="text-lg font-semibold">Address Details</div>
-                </v-col>
 
-                <v-col cols="12">
-               <v-alert
-                v-if="formData.addresses.length === 0 || !formData.addresses[0].number || !formData.addresses[0].street || !formData.addresses[0].city"
-                type="error"
-                outlined
-                 >
-                 at least one address is required.
-               </v-alert>
-               </v-col>
+              <div class="flex flex-col">
+                <div class="text-xl font-semibold">Add New Customer</div>
+                <div class="flex flex-col w-ful mt-2 mb-2">
+                  <label for="customerName">Customer Name*</label>
+                  <input v-model="formData.name" id="formData.name" name="formData.name" required>
+                  <span class="error-message">{{isNameValid}}</span>
+                </div>
+
+                <div class="flex flex-col w-ful mt-2 mb-2">
+                  <label for="company">Company*</label>
+                  <input v-model="formData.company" id="formData.company" name="formData.company" required>
+                  <span class="error-message">{{isCompanyValid}}</span>
+                </div>
+
+                <div class="flex flex-col w-ful mt-2 mb-2">
+                  <label for="phoneNo">Contact(Phone)*</label>
+                  <input v-model="formData.phoneNo" id="formData.phoneNo" name="formData.phoneNo" type="number" required>
+                  <span class="error-message">{{isPhoneNoValid}}</span>
+                </div>
+
+                <div class="flex flex-col w-ful mt-2 mb-2">
+                  <label for="email">Email*</label>
+                  <input v-model="formData.email" id="formData.email" name="email" required>
+                  <span class="error-message">{{isEmailValid}}</span>
+                </div>
+
+                <div class="flex flex-col w-ful mt-2 mb-2">
+                  <label for="country">Country*</label>
+                  <input v-model="formData.country" id="formData.country" name="formData.country" required>
+                  <span class="error-message">{{isCountryValid}}</span>
+                </div>
+
+                <div class="text-lg font-semibold">Address Details</div>
+                <div class="error-message" v-if="formData.addresses.length === 0 ||
+                  !formData.addresses[0].number ||
+                  !formData.addresses[0].street ||
+                  !formData.addresses[0].city">at least one address is required.</div>
 
                 <div v-for="(address, index) in formData.addresses" :key="index">
 
-                  <v-card class="mt-2 mb-2" style="padding: 10px;">
-                    <v-row>
-                    <v-col
-                  cols="12" sm="4"
-                >
-                  <v-text-field 
-                    label="Number*" v-model="address.number"
-                    required 
-                  ></v-text-field>
-                </v-col>
-                <v-col
-                  cols="12" sm="8"
-                >
-                  <v-text-field
-                    label="Street*" v-model="address.street"
-                    required
-                  ></v-text-field>
-                </v-col>
-                <v-col
-                  cols="12"
-                >
-                  <v-text-field
-                    label="City State*" v-model="address.city"
-                    required
-                  ></v-text-field>
-                </v-col>
-                  </v-row>
-                 <v-col col="12">
-                  <button type="button" v-if="index !== 0" @click="removeItem(index)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 flex justify-end">Remove</button>
-                 </v-col>
-                  </v-card>
-               
-              
-            
+                      <v-card class="mt-2 mb-2" style="padding: 10px;">
+                        <div class="flex flex-col w-full">
+                          <div class="flex flex-row w-full">
+                          <div class="flex flex-col w-1/3 mt-2 mb-2">
+                            <label for="phoneNo">Number*</label>
+                            <input v-model="address.number" id="address.number" name="address.number" type="number" required>
+                          </div> 
+                          <div class="flex flex-col w-2/3 mt-2 mb-2 ml-2">
+                            <label for="address.street">Street*</label>
+                            <input v-model="address.street" id="address.street" name="address.street" required>
+                          </div> 
+                        </div>
+                        <div class="flex flex-col w-2/3 mt-2 mb-2 w-full">
+                            <label for="address.street">City State*</label>
+                            <input v-model="address.city" id="address.city" name="address.city" required>
+                          </div> 
+                        </div>
+                    
+                      <div class="flex justify-end mr-2">
+                        <button type="button" v-if="index !== 0" @click="removeItem(index)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 flex justify-end">Remove</button>
+                      </div>
+                      </v-card>
+                      </div>
               </div>
-                <v-col col="12">
-                  <button type="button" @click="addItem" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add</button>
-                </v-col> 
+
+            <div class="flex mr-2">
+              <button type="button" @click="addItem" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add</button>
+            </div>
             
-              </v-col>
-              <v-col cols="12">  <small>*indicates required field</small></v-col>
-                <v-col cols="12">
-                  <div class="flex justify-end mr-2">
+            <small>*indicates required field</small>
                
+            <div class="flex justify-end mr-2">
               <button type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Submit</button>
-           
-                  </div> 
-                 </v-col>
+            </div> 
   </v-form>
            
           </v-container>
@@ -535,6 +500,11 @@ export default {
         { key: 'status', title: 'Status' },
       ],
       customers: [],
+      isNameValid: '',
+      isCompanyValid: '',
+      isPhoneNoValid: '',
+      isEmailValid: '',
+      isCountryValid: ''
     }
   },
 
@@ -549,45 +519,39 @@ export default {
       if (index !== -1) {
         this.expandedItems.push(this.customers[index]);
         this.dialogVisible = true;
-      } 
+      }
     },
 
-    getCustomers(){
+    getCustomers() {
       axios.get('/customers')
-      .then(response => {
-        this.customers = response.data.customers;
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+        .then(response => {
+          this.customers = response.data.customers;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
     },
 
     openDialog() {
       this.dialog = true;
-      this.formData.addresses.push({ 
+      this.formData.addresses.push({
         number: null,
         street: '',
-        city: '' });
+        city: ''
+      });
     },
 
     closeDialog() {
       this.dialog = false;
-      this.formData = {
-        name: '',
-        company: '',
-        phoneNo: null,
-        email: '',
-        country: '',
-        status: 'active',
-        addresses:[],
-      }
+      this.reasetForm();
     },
 
     addItem() {
-      this.formData.addresses.push({ 
+      this.formData.addresses.push({
         number: null,
         street: '',
-        city: '' });
+        city: ''
+      });
     },
 
     removeItem(index) {
@@ -595,32 +559,88 @@ export default {
     },
 
     saveForm() {
-      console.log(this.$refs.form)
-      if (this.$refs.form.isValid) {
+      const isFormValid = this.validateForm(); 
+      if (isFormValid) {
         const customerData = {
           name: this.formData.name,
           company: this.formData.company,
           phoneNo: this.formData.phoneNo,
           email: this.formData.email,
           country: this.formData.country,
-          status: 'active', 
+          status: 'active',
           addresses: this.formData.addresses,
         };
-        this.customers.push(customerData); 
+        this.customers.push(customerData);
         this.dialog = false;
-        this.formData = {
+        this.reasetForm();
+      } else {
+        console.log('Form is not valid. Please check.');
+      }
+    },
+
+    validateForm(){
+      let isValid = true;
+
+      if(!this.formData.name || this.formData.name===''){
+        this.isNameValid = 'Name is required';
+        isValid = false;
+      }else{
+        this.isNameValid = ''
+      } 
+
+      if(!this.formData.company || this.formData.company===''){
+        this.isCompanyValid = 'Company is required';
+        isValid = false;
+      }else{
+        this.isCompanyValid = ''
+      }  
+
+      if(!this.formData.phoneNo || this.formData.phoneNo===''){
+        this.isPhoneNoValid = 'Contact(Phone) is required';
+        isValid = false;
+      }else if (!/^[0-9]{10}$/.test(this.formData.phoneNo)) {
+        this.isPhoneNoValid = 'Please enter 10-digit phone number';
+        isValid = false;
+      }else{
+        this.isPhoneNoValid = ''
+      } 
+
+      if(!this.formData.email || this.formData.email===''){
+        this.isEmailValid = 'Email is required';
+        isValid = false;
+      }else if (!/.+@.+\..+/.test(this.formData.email)) {
+        this.isEmailValid = 'Please enter valid email address';
+      }else{
+        this.isEmailValid = ''
+      } 
+
+      if(!this.formData.country || this.formData.country===''){
+        this.isCountryValid = 'Country is required';
+        isValid = false;
+      }else{
+        this.isCountryValid = ''
+      } 
+
+      return isValid;
+    },
+    
+    reasetForm() {
+      this.formData = {
         name: '',
         company: '',
         phoneNo: null,
         email: '',
         country: '',
         status: 'active',
-        addresses:[],
+        addresses: [],
       }
-      } else {
-        console.log('Form is not valid. Please check.');
-      }  
-  }
+
+      this.isNameValid = '',
+      this.isCompanyValid = '',
+      this.isPhoneNoValid = '',
+      this.isEmailValid = '',
+      this.isCountryValid = ''
+    },
   },
 
   computed: {
@@ -628,16 +648,16 @@ export default {
       const randomIndex = Math.floor(Math.random() * this.imageSources.length);
       return this.imageSources[randomIndex];
     },
-    pageCount () {
-        return Math.ceil(this.customers.length / this.itemsPerPage)
-      },
 
-      isAddressValid() {
-      return this.formData.addresses.length > 0 &&
-        this.formData.addresses[0].number &&
-        this.formData.addresses[0].street &&
-        this.formData.addresses[0].city;
-    }  
+    isAddressValid() {
+      return formData.addresses.length === 0 || 
+      !formData.addresses[0].number || 
+      !formData.addresses[0].street || 
+      !formData.addresses[0].cityName 
+    },
+
+    nameListner(){
+    }
   }
 }
 </script>
@@ -650,5 +670,24 @@ export default {
 .v-data-table-header__content span {
   font-weight: bold;
   color: cadetblue;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
 }
 </style>
